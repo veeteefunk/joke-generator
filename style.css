@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.joke-generator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 8px;
+}
+
+.button {
+    padding: 5px 10px;
+    font-size: 1em;
+    background-color: darkviolet;
+    border: none;
+    color: white; 
+}
+
+.button:hover {
+    color: white;
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+.paragraph {
+    font-size: 1.8em;
+}
+
+#punchline {
+    /* display: none;  */
+    visibility: hidden;
+}
