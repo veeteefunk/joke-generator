@@ -1,35 +1,16 @@
-const jokeBtn = document.getElementById('joke-btn');
-const punchBtn = document.getElementById('punch-btn');
-const joke = document.getElementById('joke');
-const punchline = document.getElementById('punchline');
+const jokeContainer = document.getElementById("joke");
+const btn = document.getElementById("btn");
+const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=single";
 
-const jokes = [
-    {   joke: "What did the toaster say to the slice of bread?",
-        punchline: "I want you inside me."},
-    {   joke: "I'll admit it, I have a tremendous sex drive.",
-        punchline: "My girlfriend lives forty miles away."},
-    {   joke: "How do you make a pool table laugh?",
-        punchline: "Tickle its balls."},
-    {   joke: "A naked man broke into a church.",
-        punchline: "The police chased him around and finally caught him by the organ."},
-    {   joke: "What do a penis and a Rubik's Cube have in common?",
-        punchline: "The more you play with it, the harder it gets." },
-]
-
-let randomNum = 0;
-
-jokeBtn.addEventListener('click', generateJoke);
-punchBtn.addEventListener('click', revealPunchline);
-
-function generateJoke() {
-    randomNum = Math.floor(Math.random() * jokes.length);
-    console.log(randomNum);
-    joke.textContent = jokes[randomNum].joke;
-    punchline.style.visibility = "hidden"
+let getJoke = () => {
+    jokeContainer.classList.remove("fade");
+    fetch(url)
+    .then(data => data.json())
+    .then(item => {
+        jokeContainer.textContent = `${item.joke}`;
+        jokeContainer.classList.add("fade");
+    });
 }
 
-function revealPunchline() {
-    punchline.textContent = jokes[randomNum].punchline;
-    punchline.style.visibility = "visible"
-    
-}
+btn.addEventListener("click", getJoke);
+getJoke();
